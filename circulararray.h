@@ -15,7 +15,7 @@ public:
     virtual ~CircularArray();
     void push_front(T data); // check
     void push_back(T data); // check
-    void insert(T data, int pos); // checkmedia falta su resize capacity<size
+    void insert(T data, int pos); // check
     T pop_front(); // check
     T pop_back(); // check
     bool is_full(); // check
