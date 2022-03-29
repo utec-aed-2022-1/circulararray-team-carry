@@ -10,7 +10,6 @@ private:
 
 public:
     QueueArray(int _size);
-
     bool isempty();
     void resize();
     void enqueue(int _value);

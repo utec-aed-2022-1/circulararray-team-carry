@@ -10,7 +10,6 @@ private:
 public:
     StackArray();
     StackArray(int max);//capacity=max;
-
     void resize(T *&array, int &longitud, int newlongitud);
     void push(int );
     void pop();
