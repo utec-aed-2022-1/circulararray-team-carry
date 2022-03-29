@@ -1,5 +1,5 @@
 #include "circulararray.h"
-using namespace std;
+
 //Estructura LIFO (Last-In, First-Out)
 template <typename T>
 class StackArray: public CircularArray<T>{
