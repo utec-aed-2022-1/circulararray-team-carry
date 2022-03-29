@@ -1,7 +1,4 @@
 #include "circulararray.h"
-
-#include "circulararray.h"
-
 using namespace std;
 //Estructura LIFO (Last-In, First-Out)
 template <typename T>
@@ -10,26 +7,20 @@ private:
     T* array;
     //int capacity; //valor cambiable
     int size;
-
 public:
     StackArray();
     StackArray(int max);//capacity=max;
-    void push(int );
+
     void resize(T *&array, int &longitud, int newlongitud);
+    void push(int );
     void pop();
     void top();
-
     int _size();
     void printSize();
     void displayStack();
     ~StackArray();
-
 };
 
-template<class T>
-void StackArray<T>::printSize() {
-    cout<<"Size: "<<_size()<<endl;
-}
 
 template <class T>
 StackArray<T>::StackArray(int max){//capacity=max;
@@ -37,7 +28,6 @@ StackArray<T>::StackArray(int max){//capacity=max;
     CircularArray<T>:: capacity=max;
     array=new T[max];
 };
-
 
 template <class T>
 void StackArray<T>::resize(T* &array,int &longitud, int newlongitud){
@@ -67,17 +57,20 @@ void StackArray<T>:: pop(){
     cout<<"Se elimino el elemento: "<<data<<endl;
 };//O(1)
 
-
 template<class T>
 void StackArray<T>::top(){
     int indexTop=size-1;
     cout<<"Elemento top: "<<array[indexTop]<<endl;
 };
 
-
 template<class T>
 int StackArray<T>::_size(){
     return size;
+}
+
+template<class T>
+void StackArray<T>::printSize() {
+    cout<<"Size: "<<_size()<<endl;
 }
 
 template<class T>
@@ -86,6 +79,7 @@ void StackArray<T>::displayStack(){
         cout<<array[i]<<" ";
     }cout<<endl;
 };
+
 template <class T>
 StackArray<T>::~StackArray(){
     delete [] array;
