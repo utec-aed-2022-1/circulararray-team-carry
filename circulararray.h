@@ -171,4 +171,3 @@ void CircularArray<T>::clear(){
     }
     front = back = -1;
 }
-
