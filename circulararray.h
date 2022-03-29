@@ -15,18 +15,20 @@ public:
     virtual ~CircularArray();
     void push_front(T data); // check
     void push_back(T data); // check
-    void insert(T data, int pos); //
-    T pop_front(); //
-    T pop_back(); //
+    void insert(T data, int pos); // checkmedia falta su resize capacity<size
+    T pop_front(); // check
+    T pop_back(); // check
     bool is_full(); // check
     bool is_empty(); // check
-    int size(); 
-    void clear(); 
-    T &operator[](int); 
+    int size();  // check
+    void clear(); // check
+    T &operator[](int salida){
+        return array[salida];
+    }; // 
     void sort(); // check
     bool is_sorted(); // check
     void reverse(); // check
-    string to_string(string sep=" ");
+    string to_string(string sep=" "); // check
 private:
     int next(int);
     int prev(int);
@@ -81,7 +83,7 @@ bool CircularArray<T>::is_empty(){
 
 template <class T>
 bool CircularArray<T>::is_full(){
-    if (back = capacity-1) return true;
+    if (front == capacity-1) return true;
     else return false;
 }
 
@@ -89,14 +91,14 @@ template <class T>
 void CircularArray<T>::push_front(T data){
     for (int i = capacity; i > 0 ; i--) array[i] = array[i-1];
     array[0] = data;
-    back++;
+    front++;
 }
 
 template <class T>
 void CircularArray<T>::push_back(T data){
-    if ( front == -1) front = 0;
-    back++;
-    array[back]= data;
+    if ( back == -1) back = 0;
+    front++;
+    array[front]= data;
 }
 
 template <class T>
@@ -115,13 +117,11 @@ void CircularArray<T>::sort(){
 
 template <class T>
 bool CircularArray<T>::is_sorted(){
-    bool salida = false;
-    for (int i = 0; i < capacity-1; i++)
+    for (int i = 0; i < size()-1; i++)
     {
-        if (array[i+1] > array[i]) salida = true;
-        else salida = false;
+        if (array[i] > array[i+1]) return false;
     }
-    return salida;
+    return true;
 }
 
 template <class T>
@@ -135,4 +135,40 @@ void CircularArray<T>::reverse(){
     }
 }
 
+template <class T>
+T CircularArray<T>::pop_front(){
+    int value = array[front];
+    this->array[front] = 0;
+    front--;
+    return value;
+}
+
+template <class T>
+T CircularArray<T>::pop_back(){
+    int value = array[back];
+    for (int i = 0; i < size(); i++)
+    {
+        array[i] = array[i+1];
+    }
+    front--;
+    return value;
+}
+
+template <class T>
+int CircularArray<T>::size(){
+    int contador = 0;
+    for (int i = back; i < front+1; i++)
+    {
+        contador++;
+    }
+}
+
+template <class T>
+void CircularArray<T>::clear(){
+    for (int i = 0; i < capacity; i++)
+    {
+        this->array[i] = 0;
+    }
+    front = back = -1;
+}
 
