@@ -30,4 +30,3 @@ int main() {
     delete array;
     return 0;
 }
-
